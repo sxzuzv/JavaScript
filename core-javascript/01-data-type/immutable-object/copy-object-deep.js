@@ -3,7 +3,7 @@ const copyObjectDeep = function (target) {
     let result = {};
 
     if (typeof target === 'object' && target !== null) {
-        for (prop in target) {
+        for (let prop in target) {
             result[prop] = copyObjectDeep(target[prop]);
         }
     } else {
