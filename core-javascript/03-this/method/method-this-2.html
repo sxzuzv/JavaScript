@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메서드로서 호출: 점 표기법, 대괄호 표기법</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            method: function (x) { console.log(this, x); }
+        };
+
+        obj.method(628);
+        obj['method'](3);
+    </script>
+</body>
+</html>
