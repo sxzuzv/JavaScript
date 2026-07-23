@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메서드 내부에서의 this</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            methodA: function () { console.log(this); },
+            inner: {
+                methodB: function () { console.log(this); }
+            }
+        };
+
+        obj.methodA();
+        obj['methodA']();
+
+        obj.inner.methodB();
+        obj.inner['methodB']();
+        
+        obj['inner'].methodB();
+        obj['inner']['methodB']();
+    </script>
+</body>
+</html>
