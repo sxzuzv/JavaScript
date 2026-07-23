@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역변수와 전역객체 (2)</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        window.b = 2;
+
+        console.log(a, window.a, this.a);   // 1 1 1 
+        console.log(b, window.b, this.b);   // 2 2 2
+
+        window.a = 3;
+        b = 4;
+
+        console.log(a, window.a, this.a);   // 3 3 3
+        console.log(b, window.b, this.b);   // 4 4 4
+    </script>
+</body>
+</html>
