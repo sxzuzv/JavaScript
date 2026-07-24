@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call/apply 메서드의 활용 1-2</title>
+</head>
+<body>
+    <script>
+        function a () {
+            var argv = Array.prototype.slice.call(arguments);
+            argv.forEach(function (arg) {
+                console.log(arg);
+            });
+        }
+        a(1, 2, 3);
+
+        document.body.innerHTML = '<div>a</div><div>b</div><div>c</div>';
+        var nodeList = document.body.querySelectorAll('div');
+        var nodeArr = Array.prototype.slice.call(nodeList);
+        nodeArr.forEach(function (node) {
+            console.log(node);
+        });
+    </script>
+</body>
+</html>
