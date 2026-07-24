@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백 함수 내부에서의 this</title>
+</head>
+<body>
+    <script>
+        setTimeout(function () { console.log(this); }, 300);
+
+        [1, 2, 3, 4, 5].forEach(function (x) {
+            console.log(this, x);
+        });
+
+        document.body.innerHTML += '<button id="click">클릭</button>';
+        document.body.querySelector('#click')
+            .addEventListener('click', function (e) {
+                console.log(this, e);
+            });
+    </script>
+</body>
+</html>
