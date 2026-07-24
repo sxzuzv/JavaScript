@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자 함수 내부에서의 this</title>
+</head>
+<body>
+    <script>
+        var Haem = function (name, age) {
+            this.bark = "햄햄";
+            this.name = name;
+            this.age = age;
+        };
+
+        var kuri = new Haem("쿠리", 3);
+        var kuku = new Haem("쿠쿠", 6);
+        console.log(kuri, kuku);
+    </script>
+</body>
+</html>
