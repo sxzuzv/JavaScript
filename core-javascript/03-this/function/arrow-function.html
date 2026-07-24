@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this를 바인딩하지 않는 함수 - 화살표 함수</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            outer: function () {
+                console.log(this);
+
+                var innerFunc = () => {
+                    console.log(this);
+                };
+
+                innerFunc();
+            }
+        };
+
+        obj.outer();
+    </script>
+</body>
+</html>
