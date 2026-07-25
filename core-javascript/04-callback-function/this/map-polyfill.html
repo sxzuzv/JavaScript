@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백 함수 예제 2-3</title>
+</head>
+<body>
+    <script>
+        Array.prototype.map = function (callback, thisArg) {
+            var mappedArr = [];
+
+            for (var i = 0; i < this.length; i++) {
+                var mappedValue = callback.call(thisArg || window, this[i], i, this);
+                mappedArr[i] = mappedValue;
+            }
+
+            return mappedArr;   // 새로운 배열을 만든다.
+        };
+    </script>
+</body>
+</html>
