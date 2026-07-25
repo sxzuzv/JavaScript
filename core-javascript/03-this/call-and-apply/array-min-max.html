@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call/apply 메서드의 활용 3-1/title>
+</head>
+<body>
+    <script>
+        var numbers = [1, 2, 3, 4, 5];
+        var max = min = numbers[0];
+
+        numbers.forEach(function (number) {
+            if (number > max) max = number;
+            if (number < min) min = number;
+        });
+
+        console.log(max, min);
+    </script>
+</body>
+</html>
