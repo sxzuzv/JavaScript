@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백 함수 예제 (1) - setInterval</title>
+</head>
+<body>
+    <script>
+        var count = 0;
+        var cbFunc = function () {
+            console.log(count);
+
+            if (++count > 4) clearInterval(timer);
+        };
+        var timer = setInterval(cbFunc, 300);
+
+        // -- 실행 결과 --
+        // 0 (0.3초에 출력)
+        // 1 (0.6초에 출력)
+        // 2 (0.9초에 출력)
+        // 3 (1.2초에 출력)
+        // 4 (1.5초에 출력)
+    </script>
+</body>
+</html>
