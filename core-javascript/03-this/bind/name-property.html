@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind 메서드 - name 프로퍼티</title>
+</head>
+<body>
+    <script>
+        var func = function (a, b, c, d) {
+            console.log(this, a, b, c, d);
+        };
+        var bincFunc = func.bind({ x :  1 }, 4, 5);
+
+        console.log(func.name);     // func
+        console.log(bincFunc.name); // bound func
+    </script>
+</body>
+</html>
