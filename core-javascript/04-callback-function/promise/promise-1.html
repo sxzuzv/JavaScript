@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기 작업의 동기적 표현(1) - Promise(1)</title>
+</head>
+<body>
+    <script>
+        new Promise(function (resolve) {
+            setTimeout(function () {
+                var name = "말차라떼";
+                console.log(name);
+                resolve(name);
+            }, 500);
+        }).then(function (prevName) {
+                return new Promise(function (resolve) {
+                    setTimeout(function () {
+                        var name = prevName + ', 아메리카노';
+                        console.log(name);
+                        resolve(name);
+                }, 500);
+            });
+        }).then(function (prevName) {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var name = prevName + ', 카페모카';
+                    console.log(name);
+                    resolve(name);
+                }, 500);
+            });
+        }).then(function (prevName) {
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var name = prevName + ', 카페라떼';
+                    console.log(name);
+                    resolve(name);
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
