@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>익명의 콜백 함수를 기명 함수로 전환</title>
+</head>
+<body>
+    <script>
+        var coffeeList = '';
+
+        var addMatchaLatte = function (name) {
+            coffeeList = name;
+            console.log(coffeeList);
+            setTimeout(addAmericano, '500', '아메리카노');
+        };
+
+        var addAmericano = function (name) {
+            coffeeList += ', ' + name;
+            console.log(coffeeList);
+            setTimeout(addMocha, '500', '카페모카');
+        };
+
+        var addMocha = function (name) {
+            coffeeList += ', ' + name;
+            console.log(coffeeList);
+            setTimeout(addLatte, '500', '카페라떼');
+        };
+
+        var addLatte = function (name) {
+            coffeeList += ', ' + name;
+            console.log(coffeeList);
+        };
+
+        setTimeout(addMatchaLatte, 500, '말차라떼');
+    </script>
+</body>
+</html>
