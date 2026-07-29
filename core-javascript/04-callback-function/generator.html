@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기 작업의 동기적 표현(3) - Generator</title>
+</head>
+<body>
+    <script>
+        var addCoffee = function (prevName, name) {
+            setTimeout(function () {
+                coffeeMaker.next(prevName ? prevName + ', ' + name : name);
+            }, 500);
+        };
+
+        var coffeeGenerator = function* () {
+            var matchaLatte = yield addCoffee('', '말차라떼');
+            console.log(matchaLatte);
+
+            var americano = yield addCoffee(matchaLatte, '아메리카노');
+            console.log(americano);
+
+            var mocha = yield addCoffee(americano, '카페모카');
+            console.log(mocha);
+
+            var latte = yield addCoffee(mocha, '카페라떼');
+            console.log(latte);
+        };
+
+        var coffeeMaker = coffeeGenerator();
+        coffeeMaker.next();
+    </script>
+</body>
+</html>
