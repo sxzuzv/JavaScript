@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자동차 경주 게임으로 알아보는 접근 권한 제어 - 자동차 객체</title>
+</head>
+<body>
+    <script>
+        var car = {
+            fuel: Math.ceil(Math.random() * 10 + 10),   // 연료(L)
+            power: Math.ceil(Math.random() * 3 + 2),    // 연비(km/L)
+            moved: 0,                                   // 총 이동 거리
+            run: function () {
+                var km = Math.ceil(Math.random() * 6);
+                var wasteFuel = km / this.power;
+
+                // 남은 연료가 필요한 연료보다 부족하면 이동 불가
+                if (this.fuel < wasteFuel) {
+                    console.log('이동 불가!');
+                    return;
+                }
+                
+                this.fuel -= wasteFuel;                 // 연료 차감
+                this.moved += km;                       // 누적 이동 거리 갱신
+                
+                console.log(km + 'km 이동 (총 ' + this.moved + 'km)');
+            }
+        };
+    </script>
+</body>
+</html>
