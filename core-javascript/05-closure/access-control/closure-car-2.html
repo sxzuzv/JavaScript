@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자동차 경주 게임으로 알아보는 접근 권한 제어 - 클로저로 변수를 보호한 자동차 객체(2)</title>
+</head>
+<body>
+    <script>
+        var createCar = function () {
+            var fuel = Math.ceil(Math.random() * 10 + 10);  // 연료(L)
+            var power = Math.ceil(Math.random() * 3 + 2);   // 연비(km/L)
+            var moved = 0;                                  // 총 이동 거리
+
+            var publicMembers = {
+                get moved () {
+                    return moved;
+                },
+                run: function () {
+                    var km = Math.ceil(Math.random() * 6);  // 이번 턴 이동 거리
+                    var wasteFuel = km / power;             // 필요한 연료
+
+                    // 남은 연료가 필요한 연료보다 부족하면 이동 불가
+                    if (fuel < wasteFuel) {
+                        console.log('이동 불가!');
+                        return;
+                    }
+                    
+                    fuel -= wasteFuel;                 // 연료 차감
+                    moved += km;                       // 누적 이동 거리 갱신
+                    
+                    console.log(km + 'km 이동 (총 ' + moved + 'km), 남은 연료: ' + fuel);
+                }
+            };
+
+            Object.freeze(publicMembers);
+            return publicMembers;
+        };
+
+        var car = createCar();
+        car.run();
+    </script>
+</body>
+</html>
