@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커링 함수(2)</title>
+</head>
+<body>
+    <script>
+        var curry = function (func) {
+            return function (a) {
+                return function (b) {
+                    return function (c) {
+                        return function (d) {
+                            return function (e) {
+                                return func(a, b, c, d, e);
+                            };
+                        };
+                    };
+                };
+            };
+        };
+
+        var getMax = curry(Math.max);
+        console.log(getMax(1)(2)(3)(4)(5)); // 5
+
+        // ES6에서는 화살표 함수로 표현 가능
+        var curry2 = func => a => b => c => d => e => func(a, b, c, d, e);
+        var getMax2 = curry2(Math.max);
+        console.log(getMax2(1)(2)(3)(4)(5)); // 5
+    </script>
+</body>
+</html>
