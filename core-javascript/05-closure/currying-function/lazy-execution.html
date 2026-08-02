@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커링 함수 - 지연 실행</title>
+</head>
+<body>
+    <script>
+        var getInformation = function (baseUrl) {               // 서버에 요청할 주소의 기본 URL
+            return function (path) {                            // path 값
+                return function (id) {                          // id 값
+                    return fetch(baseUrl + path + '/' + id);    // 서버에 정보 요청
+                };
+            };
+        };
+
+        // ES6 화살표 함수
+        var getInformation1 = baseUrl => path => id => fetch(baseUrl + path + '/' + id);
+
+        // -- 활용 예시 --
+        // baseUrl
+        var imageUrl = 'http://imageAddress.com/';
+        var productUrl = 'http://productAddress.com/';
+
+        // 이미지 타입별 요청 함수 준비
+        var getImage = getInformation(imageUrl);     // http://imageAddress.com/
+        var getEmoticon = getImage('emoticon');      // http://imageAddress.com/emoticon
+        var getIcon = getImage('icon');              // http://imageAddress.com/icon
+
+        // 제품 타입별 요청 함수 준비
+        var getProduct = getInformation(productUrl); // http://productAddress.com/
+        var getFruit = getProduct('fruit');          // http://productAddress.com/fruit
+        var getVagetable = getProduct('vegetable');  // http://productAddress.com/vegetable
+
+        // 실제 요청
+        var emoticon = getEmoticon(100);             // http://imageAddress.com/emoticon/100
+        var icon = getIcon(205);                     // http://imageAddress.com/icon/205
+        var fruit = getFruit(400);                   // http://productAddress.com/fruit/400
+        var vegetable = getVagetable(628);           // http://productAddress.com/vegetable/628
+    </script>
+</body>
+</html>
