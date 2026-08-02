@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol.for</title>
+</head>
+<body>
+    <script>
+        (function () {
+            var EmptySpace = Symbol.for('EMPTY_SPACE');
+            // 전역 심볼공간에 'EMPTY_SPACE'라는 문자열을 가진 심볼이 없으므로 신규 생성
+
+            console.log(EmptySpace);
+        })();
+
+        (function() {
+            console.log(Symbol.for('EMPTY_SPACE'));
+            // 전역 심볼공간에 'EMPTY_SPACE'라는 문자열의 심볼이 있으므로 해당 값 참조
+        })();
+    </script>
+</body>
+</html>
