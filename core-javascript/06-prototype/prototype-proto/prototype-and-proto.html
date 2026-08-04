@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prototype과 __proto__</title>
+</head>
+<body>
+    <script>
+        var Constructor = function (name) {
+            this.name = name;
+        };
+
+        Constructor.prototype.method1 = function () {};
+        Constructor.prototype.property1 = 'Constructor Prototype Property';
+
+        var instance = new Constructor('Instance');
+        
+        console.dir(Constructor);
+        console.dir(instance);
+    </script>
+</body>
+</html>
