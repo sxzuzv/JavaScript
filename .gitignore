@@ -55,3 +55,5 @@ logs/
 *.swp
 *.swo
 *~
+
+.idea/
