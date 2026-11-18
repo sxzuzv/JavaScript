@@ -18,7 +18,7 @@ function render() {
     const cardBox = document.querySelector('#cards');
 
     const result = movies.map(m => `
-        <a>
+        <a class='card' href='detail.html?id=${m.id}'>
             <img src="https://image.tmdb.org/t/p/w200${m.poster_path}">
             <h3>${m.title}</h3>
             <p>평점: ${m.vote_average}</p>
